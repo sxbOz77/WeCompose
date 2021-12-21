@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/compose-model-1640076842718.xml" value="0.8238636363636364" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.34791666666666665" />
         <entry key="app/src/main/res/drawable/avatar_diuwuxian.xml" value="0.3425641025641026" />
+        <entry key="app/src/main/res/drawable/avatar_gaolaoshi.xml" value="0.3425641025641026" />
+        <entry key="app/src/main/res/drawable/avatar_rengwuxian.xml" value="0.3425641025641026" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.3425641025641026" />
+        <entry key="app/src/main/res/drawable/ic_arrow_more.xml" value="0.3425641025641026" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.34791666666666665" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.34791666666666665" />
       </map>
