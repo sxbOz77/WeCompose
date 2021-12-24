@@ -21,11 +21,12 @@ import com.ozgungnir77.wecompose.ui.theme.WeComposeTheme
 
 @Composable
 fun ChatList(chats: List<Chat>) {
-    Box(
+    Column(
         Modifier
             .background(WeComposeTheme.colors.background)
             .fillMaxSize()
     ) {
+        WeTopBar(title = "扔信")
         LazyColumn(Modifier.background(WeComposeTheme.colors.listItem)) {
             itemsIndexed(chats) { index, chat ->
                 ChatListItem(chat)

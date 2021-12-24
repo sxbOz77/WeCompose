@@ -19,9 +19,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WeComposeTheme {
+            val viewModel: WeViewModel = viewModel()
+            WeComposeTheme(viewModel.theme) {
                 Column {
-                    val viewModel: WeViewModel = viewModel()
                     HorizontalPager(count = 4) { page ->
                         when (page) {
                             0 -> ChatList(viewModel.chats)

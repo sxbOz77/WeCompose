@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.ozgungnir77.wecompose.data.Chat
 import com.ozgungnir77.wecompose.data.Msg
 import com.ozgungnir77.wecompose.data.User
+import com.ozgungnir77.wecompose.ui.theme.WeComposeTheme
 
 class WeViewModel : ViewModel() {
     var chats by mutableStateOf(
@@ -49,4 +50,5 @@ class WeViewModel : ViewModel() {
         )
     )
     var selectedTab by mutableStateOf(0)
+    var theme by mutableStateOf(WeComposeTheme.Theme.Light)
 }
