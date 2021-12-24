@@ -1,6 +1,7 @@
 package com.ozgungnir77.wecompose.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -20,47 +21,58 @@ import com.ozgungnir77.wecompose.ui.theme.WeComposeTheme
 
 @Composable
 fun ChatList(chats: List<Chat>) {
-    LazyColumn(Modifier.fillMaxSize()) {
-        itemsIndexed(chats) { index, chat ->
-            Row(Modifier.fillMaxWidth()) {
-                Image(
-                    painterResource(chat.friend.avatar), chat.friend.name,
-                    Modifier
-                        .padding(8.dp)
-                        .size(48.dp)
-                        .unread(!chat.msgs.last().read, WeComposeTheme.colors.badge),
-                )
-                Column(
-                    Modifier
-                        .weight(1f)
-                        .align(Alignment.CenterVertically),
-                ) {
-                    Text(
-                        chat.friend.name,
-                        fontSize = 17.sp,
-                        color = WeComposeTheme.colors.textPrimary
-                    )
-                    Text(
-                        chat.msgs.last().text,
-                        fontSize = 14.sp,
-                        color = WeComposeTheme.colors.textSecondary
+    Box(
+        Modifier
+            .background(WeComposeTheme.colors.background)
+            .fillMaxSize()
+    ) {
+        LazyColumn(Modifier.background(WeComposeTheme.colors.listItem)) {
+            itemsIndexed(chats) { index, chat ->
+                ChatListItem(chat)
+                if (index < chats.lastIndex) {
+                    Divider(
+                        startIndent = 68.dp,
+                        color = WeComposeTheme.colors.chatListDivider,
+                        thickness = 0.8f.dp
                     )
                 }
-                Text(
-                    chat.msgs.last().time,
-                    Modifier.padding(8.dp, 8.dp, 12.dp, 8.dp),
-                    fontSize = 11.sp,
-                    color = WeComposeTheme.colors.textSecondary
-                )
-            }
-            if (index < chats.lastIndex) {
-                Divider(
-                    startIndent = 68.dp,
-                    color = WeComposeTheme.colors.chatListDivider,
-                    thickness = 0.8f.dp
-                )
             }
         }
+    }
+}
+
+@Composable
+private fun ChatListItem(chat: Chat) {
+    Row(Modifier.fillMaxWidth()) {
+        Image(
+            painterResource(chat.friend.avatar), chat.friend.name,
+            Modifier
+                .padding(8.dp)
+                .size(48.dp)
+                .unread(!chat.msgs.last().read, WeComposeTheme.colors.badge),
+        )
+        Column(
+            Modifier
+                .weight(1f)
+                .align(Alignment.CenterVertically),
+        ) {
+            Text(
+                chat.friend.name,
+                fontSize = 17.sp,
+                color = WeComposeTheme.colors.textPrimary
+            )
+            Text(
+                chat.msgs.last().text,
+                fontSize = 14.sp,
+                color = WeComposeTheme.colors.textSecondary
+            )
+        }
+        Text(
+            chat.msgs.last().time,
+            Modifier.padding(8.dp, 8.dp, 12.dp, 8.dp),
+            fontSize = 11.sp,
+            color = WeComposeTheme.colors.textSecondary
+        )
     }
 }
 
