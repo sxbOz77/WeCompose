@@ -3,7 +3,8 @@ package com.ozgungnir77.wecompose.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +21,7 @@ import com.ozgungnir77.wecompose.ui.theme.WeComposeTheme
 @Composable
 fun ChatList(chats: List<Chat>) {
     LazyColumn(Modifier.fillMaxSize()) {
-        items(chats) { chat ->
+        itemsIndexed(chats) { index, chat ->
             Row(Modifier.fillMaxWidth()) {
                 Image(
                     painterResource(chat.friend.avatar), chat.friend.name,
@@ -50,6 +51,13 @@ fun ChatList(chats: List<Chat>) {
                     Modifier.padding(8.dp, 8.dp, 12.dp, 8.dp),
                     fontSize = 11.sp,
                     color = WeComposeTheme.colors.textSecondary
+                )
+            }
+            if (index < chats.lastIndex) {
+                Divider(
+                    startIndent = 68.dp,
+                    color = WeComposeTheme.colors.chatListDivider,
+                    thickness = 0.8f.dp
                 )
             }
         }
